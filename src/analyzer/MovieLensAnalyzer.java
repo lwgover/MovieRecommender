@@ -177,11 +177,19 @@ public class MovieLensAnalyzer {
 	private static int[] prevsToPath(int[] prevs, int startingNode,int endingNode){
 		int curr = endingNode;
 		LinkedList<Integer> path = new LinkedList<>();
+		int counter = 0;
 		while(curr != startingNode){
 			if(curr <= -1){
 				throw new InternalError();
 			}
+			if(counter > prevs.length){
+				throw new InternalError();
+			}
+			counter++;
 			path.addFirst(curr);
+			if(curr == prevs[curr]){
+				throw new InternalError();
+			}
 			curr = prevs[curr];
 		}
 		path.addFirst(curr);

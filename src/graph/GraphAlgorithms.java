@@ -77,36 +77,35 @@ public class GraphAlgorithms {
      * @param source source node
      * @return int array in which arr[i] returns the previous node on the shortest path to source from i
      */
-    public static int[] dijkstrasAlgorithm(GraphIfc<Integer> graph, int source){
-        assert graph.containsVertex(source);
+    public static int[] dijkstrasAlgorithm(GraphIfc<Integer> graph, int source) {
         PriorityQueue Q = new PriorityQueue();
-        int[] distance = new int[graph.numVertices()];
-        int[] prevs = new int[graph.numVertices()];
-        HashSet<Integer> visited = new HashSet<>();
-        for(int i = 0; i < graph.numVertices(); i++){
-            distance[i] = Integer.MAX_VALUE;
-            prevs[i] = -1;
+        int[] dist = new int[graph.numVertices()];
+        int[] prev = new int[graph.numVertices()];
+
+        dist[source] = 0;
+
+        for (int vertex : graph.getVertices()) {
+            if (vertex != source) {
+                dist[vertex] = Integer.MAX_VALUE;
+            }
+
+            Q.push(dist[vertex], vertex);
         }
-        distance[source] = 0;
-        prevs[source] = source;
-        for(int i:graph.getVertices()){
-            Q.push(distance[i],i);
-        }
-        while(!Q.isEmpty()){
+
+        while (!Q.isEmpty()) {
             int u = Q.pop();
-            visited.add(u);
-            for(Integer v:graph.getNeighbors(u)){
-                int altCost = distance[u] + (int)graph.getEdgeWeight(u,v);
-                if(altCost < distance[v]){
-                    distance[v] = altCost;
-                    prevs[v] = u;
-                    if(!visited.contains(v) && !Q.isPresent(v)){
-                        Q.changePriority(altCost,v);
-                    }
+
+            for (int v : graph.getNeighbors(u)) {
+                int alt = Math.max(dist[u], dist[u] + 1);
+                if (alt < dist[v]) {
+                    dist[v] = alt;
+                    prev[v] = u;
+                    Q.changePriority(alt, v);
                 }
             }
         }
-        return prevs;
+
+        return prev;
     }
     /**
      * All node shortest path algorithm
