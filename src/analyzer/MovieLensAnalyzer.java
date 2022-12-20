@@ -242,7 +242,7 @@ public class MovieLensAnalyzer {
 			g.addVertex(i);
 		}
 		for(int i = 0; i < movies.size(); i++){
-			for(int j = 0; j < movies.size(); j++){
+			for(int j = i; j < movies.size(); j++){
 				if(i != j){
 					int counter = 0;
 					for(int k = 1; k <= users.size(); k++){
