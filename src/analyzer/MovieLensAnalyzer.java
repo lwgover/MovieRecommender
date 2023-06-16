@@ -48,7 +48,7 @@ public class MovieLensAnalyzer {
 			System.out.println("[Option 4] u and v have a weighted edge that is larger the more different the movies are");
 			System.out.print("Chose an option to build the Graph(1-4): ");
 			typeOfGraph  = input.nextInt();
-			if (typeOfGraph > 0 && 4 >= typeOfGraph) {
+			if (typeOfGraph > 0 && 5 >= typeOfGraph) {
 				numsWrong = false;
 			} else {
 				System.out.println("\u001B[31m" + "Please enter a number between 1 and 4" + "\u001B[0m");
@@ -64,6 +64,8 @@ public class MovieLensAnalyzer {
 					g = makeUnweightedMovieGraph3(movies, users);
 			case 4 ->
 					g = makeWeightedMovieGraph(movies, users);
+			case 5 ->
+					g = makeUnweightedMovieGraph4(movies, users);
 				//Do Stuff For Option 2
 		}
 		//There are 3 choices for defining adjacency:
@@ -160,6 +162,9 @@ public class MovieLensAnalyzer {
 				case 5 -> {
 					repeat = false;
 					System.out.println("Exiting...bye");
+				}
+				case 6 -> {
+					MakeJSON.graphToJSON(g,movies);
 				}
 				default -> System.out.println("\u001B[31m" + "Please enter a number between 1 and 4" + "\u001B[0m");
 			}
@@ -320,6 +325,64 @@ public class MovieLensAnalyzer {
 					}
 					g.addEdge(i,j,(Math.pow((100 * (genreDiffs / totalGenres)) + (100 * (ratingsDiffs / totalRatings)),2)));
 				}
+			}
+		}
+		return g;
+	}
+	/**
+	 * Constructs a weighted connected graph of movies in which the edge weight is given by
+	 * ((100 * (genre differences / totalGenres)) + (100 * (ratings differences / totalRatings))^2
+	 *
+	 * @param movies List of movies for the nodes in the Graph
+	 * @param users List of reviewers to construct the edges in the graph from
+	 * @return returns a graph of movies
+	 */
+	private static GraphIfc<Integer> makeUnweightedMovieGraph4(Map<Integer, Movie> movies, Map<Integer, Reviewer> users){
+		WeightedGraph<Integer> g = new WeightedGraph<Integer>();
+		int num_chosen = 2;
+		for(int i = 0; i < movies.size(); i++){
+			g.addVertex(i);
+		}
+		for(int i = 0; i < movies.size(); i++){
+			int[] mostSimilars = new int[num_chosen];
+			double[] mostSimilarsValues = new double[num_chosen];
+			for(int j = 0; j < num_chosen; j++){
+				mostSimilarsValues[j] = Double.MAX_VALUE;
+			}
+			for(int j = 0; j < movies.size(); j++){
+				if(i != j){
+					double genreDiffs = 0;
+					double totalGenres = 0;
+					double ratingsDiffs = 0;
+					double totalRatings = 0;
+					for(String genre:movies.get(i+1).getGenres()){
+						if(!movies.get(j+1).getGenres().contains(genre)){
+							genreDiffs++;
+						}
+						totalGenres++;
+					}
+					for(int k = 1; k <= users.size(); k++){
+						if(users.get(k).ratedMovie(i+1) && users.get(k).ratedMovie(j+1)){
+							ratingsDiffs += Math.abs(users.get(k).getMovieRating(i+1) - users.get(k).getMovieRating(j+1)) / 4;
+						}
+						totalRatings++;
+					}
+					double totalDiff = (Math.pow((100 * (genreDiffs / totalGenres)) + (100 * (ratingsDiffs / totalRatings)),2));
+
+					if(totalDiff < mostSimilarsValues[num_chosen-1]){
+						for(int k = 0; k < num_chosen; k++){
+							if (totalDiff < mostSimilarsValues[k]){
+								mostSimilarsValues[k] = totalDiff;
+								mostSimilars[k] = j;
+								break;
+							}
+						}
+					}
+				}
+			}
+			for(int j = 0; j < num_chosen; j++){
+				g.addEdge(i,mostSimilars[j]);
+				g.addEdge(mostSimilars[j],i);
 			}
 		}
 		return g;
