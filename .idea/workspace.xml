@@ -111,7 +111,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670741763765</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added MovieGraph.png for the ReadMe">
+      <created>1686947177982</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686947177982</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added JSON and Small Graph functions to MovieLensAnalyzer">
+      <created>1686947315122</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686947315122</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,6 +142,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed Dijkstra" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Dijkstra" />
+    <MESSAGE value="Added MovieGraph.png for the ReadMe" />
+    <MESSAGE value="Added JSON and Small Graph functions to MovieLensAnalyzer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JSON and Small Graph functions to MovieLensAnalyzer" />
   </component>
 </project>

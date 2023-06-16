@@ -26,7 +26,7 @@ var offset = [0,0];
 var scale = 0.25;
 
 
-var graph_simulation = d3.json("https://www.lucasgover.com/Interactive-Data-Visualization/movie_graph.json", function(dataset){
+var graph_simulation = d3.json("https://www.lucasgover.com/MovieRecommender/movie_graph.json", function(dataset){
         //Initialize a simple force layout, using the nodes and edges in dataset
     var force = d3.forceSimulation(dataset.nodes)
                     .force("charge", d3.forceManyBody().strength(-60))
@@ -118,8 +118,15 @@ var graph_simulation = d3.json("https://www.lucasgover.com/Interactive-Data-Visu
         d3.select("#tooltip")
             .style("left", xPosition + "px")
             .style("top", yPosition + "px")						
-            .select("#value")
+            .select("#name")
             .text(d.name);
+
+        //Update the tooltip position and value
+                d3.select("#tooltip")
+                    .style("left", xPosition + "px")
+                    .style("top", yPosition + "px")
+                    .select("#genres")
+                    .text(d.genres.toString());
 
         //Show the tooltip
         d3.select("#tooltip").classed("hidden", false);
