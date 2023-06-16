@@ -46,7 +46,8 @@ public class MovieLensAnalyzer {
 			System.out.println("[Option 2] u and v are adjacent if the same 12 users watched both movies (regardless of rating)");
 			System.out.println("[Option 3] u and v are adjacent they share at least one genre");
 			System.out.println("[Option 4] u and v have a weighted edge that is larger the more different the movies are");
-			System.out.print("Chose an option to build the Graph(1-4): ");
+			System.out.println("[Option 5] Small graph in which each node is connected to the two most similar movies");
+			System.out.print("Chose an option to build the Graph(1-5): ");
 			typeOfGraph  = input.nextInt();
 			if (typeOfGraph > 0 && 5 >= typeOfGraph) {
 				numsWrong = false;
@@ -81,7 +82,8 @@ public class MovieLensAnalyzer {
 			System.out.println("[Option 3] Display the shortest path between nodes");
 			System.out.println("[Option 4] Sort Movies by most similar to your movie(Works best with a weighted Graph)");
 			System.out.println("[Option 5] Quit");
-			System.out.print("Chose an option(1-4): ");
+			System.out.println("[Option 6] Write graph as json file");
+			System.out.print("Chose an option(1-6): ");
 			switch (input.nextInt()) {
 				//[Option 1] Print out statistics about the graph
 				case 1 -> {
