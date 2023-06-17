@@ -77,7 +77,7 @@ var graph_simulation = d3.json("https://www.lucasgover.com/MovieRecommender/movi
         .data(dataset.edges)
         .enter()
         .append("line")
-        .style("stroke", "#ccc")
+        .style("stroke", "rgba(255,255,255,0.4)")
         .style("stroke-width", 1);
 
     //Create nodes as circles

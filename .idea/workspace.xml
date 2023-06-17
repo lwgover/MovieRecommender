@@ -125,7 +125,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686947315122</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Genre to display div">
+      <created>1686949641103</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686949641103</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Genre to display div">
+      <created>1686950150753</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686950150753</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +158,7 @@
     <MESSAGE value="Fixed Dijkstra" />
     <MESSAGE value="Added MovieGraph.png for the ReadMe" />
     <MESSAGE value="Added JSON and Small Graph functions to MovieLensAnalyzer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JSON and Small Graph functions to MovieLensAnalyzer" />
+    <MESSAGE value="Added Genre to display div" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Genre to display div" />
   </component>
 </project>
