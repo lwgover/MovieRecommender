@@ -97,10 +97,12 @@ var graph_simulation = d3.json("https://www.lucasgover.com/MovieRecommender/movi
     svg.append("rect")
         .attr("x",0.5 * w - 95)
         .attr("y",0.95 * h - 26)
+        .attr("rx",3)
+        .attr('ry',3)
         .attr("width",190)
         .attr("height",36)
         .attr("fill","white")
-        .attr("opacity",0.4);
+        .attr("opacity",0.2);
 
     svg.append("a")
         .attr("href","https://github.com/lwgover/MovieRecommender")
@@ -110,7 +112,8 @@ var graph_simulation = d3.json("https://www.lucasgover.com/MovieRecommender/movi
         .attr("y","95%")
         .style("font-size","24pt")
         .style("pointer-events","all")
-        .attr("text-decoration","underline");
+        .attr("fill","white")
+        .attr("opacity",0.4);
 
     
     update = function() { 
