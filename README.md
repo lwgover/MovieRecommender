@@ -6,13 +6,13 @@ This project was designed to generate a graph of movies from a movie review data
 
 ## How to use
 
-The interface is contained within the `src/Analyzer/MovieLensAnalyzer.java` class. Run `javac src/Analyzer/MovieLensAnalyzer.java` then `java src/Analyzer/MovieLensAnalyzer.java` to get movie recommendations!
+The interface is contained within the `src/Analyzer/MovieLensAnalyzer.java` class. In the terminal, run `javac src/Analyzer/MovieLensAnalyzer.java` then `java src/Analyzer/MovieLensAnalyzer.java` to get movie recommendations!
 
-## Demo
+## Visualization Demo
 
 To see the live demo, go to [lucasgover.com/MovieRecommender](https://www.lucasgover.com/MovieRecommender/).
 
-## Sample Interaction
+## Sample Terminal Interaction
 
 ```
 ========== Welcome to MovieLens Analyser ==========
