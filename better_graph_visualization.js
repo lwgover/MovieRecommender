@@ -94,6 +94,24 @@ var graph_simulation = d3.json("https://www.lucasgover.com/MovieRecommender/movi
             .on("drag", dragging)
             .on("end", dragEnded));
 
+    svg.append("rect")
+        .attr("x",0.5 * w - 95)
+        .attr("y",0.95 * h - 26)
+        .attr("width",190)
+        .attr("height",36)
+        .attr("fill","white")
+        .attr("opacity",0.4);
+
+    svg.append("a")
+        .attr("href","https://github.com/lwgover/MovieRecommender")
+        .append("text")
+        .text("[Source Code]")
+        .attr("x","50%")
+        .attr("y","95%")
+        .style("font-size","24pt")
+        .style("pointer-events","all")
+        .attr("text-decoration","underline");
+
     
     update = function() { 
         edges.attr("x1", function(d) { return scale * (d.source.x + (offset[0])) + w/2; })
